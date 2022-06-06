@@ -1,23 +1,17 @@
-from lib2to3.pgen2 import token
 import discord # discord.py-1.7.3.dist-info , discord.py
 from discord.ui import Select,View, Button #discord_ui-5.1.6.dist-info,py_cord-2.0.0b5.dist-info
 from discord.ext import commands
 from zmq import ctx_opts
 #from soupsieve import select
 
-#!import Token
-from Token import _Token
-_Token = _Token
 
 
-
-#! For now i can't work with discord.ui
-#from discord_components import Button, Select, SelectOption, ComponentsBot 
 
 
 intents = discord.Intents.all()
 AZALEA = commands.Bot(command_prefix='-', intents=intents)
-#embed = discord.Embed()
+
+
 #Check if Bot on
 @AZALEA.event
 async def on_ready():
@@ -47,11 +41,9 @@ async def te(ctx):
     await ctx.send(embed=embed)
 
 
-
-
 #List
 class MySelect(Select):
-    def __init__(self):
+    def __init__(self,):
         super().__init__(    
             #min_values=2,
             #max_values=4,
@@ -98,31 +90,33 @@ class MySelect(Select):
                                     
                                     ),
                 ]
+            
         )
-    
-    async def callback(self, interaction,):
+    async def callback(self, interaction):
         if self.values[0] == "Be_kon_Fansub"  :
             print("Done be")
             
             #Embed
             embed = discord.Embed(
                 title = 'Be-kon Fansub',
-                description = 'أعظم فريق في التاريخ',
+                description = 'Big team',
                 colour = discord.Colour.blurple()
                 )
             embed.set_footer(text= f"Team {self.values[0]}")
-            #embed.set_author(name = ctx.author.display_name, icon_url= ctx.author.avatar_url)
+            embed.set_author(name = "Reply")
+            #embed.set_author(name =  ctx.author.display_name, icon_url= ctx.author.display_avatar)
+
             
             #Button
-            Twitter=Button  (label='تويتر',
+            Twitter=Button  (label='Twitter',
                             style= discord.ButtonStyle.blurple,
                             emoji= "🐦",url="https://twitter.com/Bekonfansub"
             )
-            instagram =   Button  (label='إنستقرام'
+            instagram =   Button  (label='instgram'
                             ,style= discord.ButtonStyle.blurple, 
                             emoji= "🖼",url="https://www.instagram.com/bekonfansub/"
             )
-            Web =   Button  (label='المدونة'
+            Web =   Button  (label='Web'
                             ,style= discord.ButtonStyle.blurple, 
                             emoji= "🌐",url="https://beautifulsub.wordpress.com"
             )
@@ -138,8 +132,6 @@ class MySelect(Select):
         elif self.values[0] == "0x2" :
             print("i'm Reading 1")
 
-        #await interaction.response.send_message(f"You Choose This {self.values}")
-        #await interaction.response.send_message(f"You Choose This {select.values[0]}")
 
 @AZALEA.command()
 async def tt(ctx): 
@@ -151,7 +143,10 @@ async def tt(ctx):
     view.add_item(select)
     await ctx.send("Choose Team :",view=view)
 
-#run bot
+
+
+#!import Token , #run bot
+from Token import _Token
 AZALEA.run(_Token)
 
 

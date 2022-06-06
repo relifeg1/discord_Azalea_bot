@@ -5,6 +5,8 @@ Step for git to github
 2- git commit -m 'say anything'
 3- git push 
 
-
+if Screen Sharing Available for Discord bot , I have idea for it I'll do somthing When a group of 
+people meet in discord channel they can vote if they want The video Stop o play on chating if 80% want to stop o play 
+the order be on in this Time . 
 
 git status
