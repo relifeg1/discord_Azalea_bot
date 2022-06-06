@@ -1,8 +1,15 @@
+from lib2to3.pgen2 import token
 import discord # discord.py-1.7.3.dist-info , discord.py
 from discord.ui import Select,View, Button #discord_ui-5.1.6.dist-info,py_cord-2.0.0b5.dist-info
 from discord.ext import commands
 from zmq import ctx_opts
 #from soupsieve import select
+
+#!import Token
+from Token import _Token
+_Token = _Token
+
+
 
 #! For now i can't work with discord.ui
 #from discord_components import Button, Select, SelectOption, ComponentsBot 
@@ -144,9 +151,8 @@ async def tt(ctx):
     view.add_item(select)
     await ctx.send("Choose Team :",view=view)
 
-
 #run bot
-AZALEA.run("OTgxNTY4NTQ2NzAwMTQ0Njcw.G9HGET.OK0HuQD0dL2XVOZcxxalBnVPP3vRR7hydF7ll8")
+AZALEA.run(_Token)
 
 
 
