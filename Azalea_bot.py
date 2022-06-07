@@ -47,93 +47,85 @@ class MySelect(Select):
         super().__init__(    
             #min_values=2,
             #max_values=4,
-            placeholder= "Team SUB",
+            placeholder= "List Of Team",
             options = [
                 discord.SelectOption(label= "Be-kon Fansub",
-                                    value= "Be_kon_Fansub", 
+                                    value= "Be-kon Fansub", 
                                     emoji= "🔴",
-                                    description= "Sub Team",
+                                    description= "Drama",
                                     
                                     ),
                 
                 discord.SelectOption(label= "JSEKAI FANSUB", 
-                                    value= "JSEKAI_FANSUB",
+                                    value= "JSEKAI FANSUB",
                                     emoji= "🟣",
-                                    description= "Sub Team",
+                                    description= "Drama",
                                     
                                     ),
                 
                 discord.SelectOption(label= "MINTO Fansub",
                                     value= "MINTO_Fansub", 
                                     emoji= "🔵",
-                                    description= "Sub Team", 
+                                    description= "Drama", 
                                     
                                     ),
                 discord.SelectOption(label= "Akisubs",
                                     value= "Akisubs", 
                                     emoji= "🟢",
-                                    description= "Sub Team",
+                                    description= "Moive",
                                     
                                     ),
                 
                 discord.SelectOption(label= "BjooDrama",
                                     value= "Bjoo_Drama", 
                                     emoji= "🟡",
-                                    description= "Sub Team",
+                                    description= "Moive",
                                     
                                     ),
                 
                 discord.SelectOption(label= "Midnight Walk",
                                     value= "Midnight_Walk", 
                                     emoji= "🟠",
-                                    description= "Sub Team",
+                                    description= "Music",
                                     
                                     ),
                 ]
             
         )
-    async def callback(self, interaction: discord.Interaction):
+    async def callback(self,interaction: discord.Interaction):
+        twlink =  "https://twitter.com/ac"
+        inslink = "https://www.instagram.com/ac"
         
-        if self.values[0] == "Be_kon_Fansub":
+        if self.values[0] == "Be-kon Fansub":
             print("Done be")
             
-            #Embed
+            #Button
+            Twitter=Button  (label='Twitter',style= discord.ButtonStyle.blurple,
+                            emoji= "🐦",url= twlink.replace("ac","Bekonfansub"))
             
+            instagram=Button(label='instgram',style= discord.ButtonStyle.blurple, 
+                            emoji= "🖼",url= inslink.replace("ac","Bekonfansub"))
+            
+            Web= Button     (label='Web',style= discord.ButtonStyle.blurple,
+                            emoji= "🌐",url="https://beautifulsub.wordpress.com")
+            
+            #Embed
             embed = discord.Embed(
                 title = 'Be-kon Fansub',
                 description = 'Big team',
                 colour = discord.Colour.blurple()
                 )
             embed.set_footer(text= f"Team {self.values[0]}")
-            #embed.set_author(name = "Reply")
             embed.set_author(name =  embed.author.display_name, icon_url= embed.author.display_avatar)
-
-            
-            #Button
-            Twitter=Button  (label='Twitter',
-                            style= discord.ButtonStyle.blurple,
-                            emoji= "🐦",url="https://twitter.com/Bekonfansub"
-            )
-            instagram=Button (label='instgram'
-                            ,style= discord.ButtonStyle.blurple, 
-                            emoji= "🖼",url="https://www.instagram.com/bekonfansub/"
-            )
-            Web =   Button  (label='Web'
-                            ,style= discord.ButtonStyle.blurple, 
-                            emoji= "🌐",url="https://beautifulsub.wordpress.com"
-            )
+            #embed.set_author(name = "Reply")
             
             
-            view = View()
-            view.add_item(Twitter)
-            view.add_item(instagram)
-            view.add_item(Web)
-            await interaction.response.send_message("Hi!",embed=embed,view=view)
-            await interaction.response.send_message(f"Team {self.values}")
-            
-        elif self.values[0] == "0x2" :
-            print("i'm Reading 1")
-            
+        view = View()
+        view.add_item(Twitter)
+        view.add_item(instagram)
+        view.add_item(Web)
+        await interaction.response.send_message(f"Link! {self.values[0]}",view=view,embed=embed)
+        #await interaction.response.send_message(f"Team {self.values}") 
 
 @AZALEA.command()
 async def tt(ctx): 
