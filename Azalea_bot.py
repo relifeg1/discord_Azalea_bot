@@ -36,14 +36,14 @@ async def td(ctx):
 @AZALEA.command()
 async def te(ctx):
     embed = discord.Embed(title="dog",url="https://google.com",description="I love you",color=0x002200)
-    embed.set_author(name =  ctx.author.display_name, icon_url= ctx.author.display_avatar)
+    embed.set_author(name =  ctx.author.display_name, icon_url= ctx.author.display_avatar.url)
     
     await ctx.send(embed=embed)
 
 
 #List
 class MySelect(Select):
-    def __init__(self,):
+    def __init__(self):
         super().__init__(    
             #min_values=2,
             #max_values=4,
@@ -92,19 +92,21 @@ class MySelect(Select):
                 ]
             
         )
-    async def callback(self, interaction):
-        if self.values[0] == "Be_kon_Fansub"  :
+    async def callback(self, interaction: discord.Interaction):
+        
+        if self.values[0] == "Be_kon_Fansub":
             print("Done be")
             
             #Embed
+            
             embed = discord.Embed(
                 title = 'Be-kon Fansub',
                 description = 'Big team',
                 colour = discord.Colour.blurple()
                 )
             embed.set_footer(text= f"Team {self.values[0]}")
-            embed.set_author(name = "Reply")
-            #embed.set_author(name =  ctx.author.display_name, icon_url= ctx.author.display_avatar)
+            #embed.set_author(name = "Reply")
+            embed.set_author(name =  embed.author.display_name, icon_url= embed.author.display_avatar)
 
             
             #Button
@@ -112,7 +114,7 @@ class MySelect(Select):
                             style= discord.ButtonStyle.blurple,
                             emoji= "🐦",url="https://twitter.com/Bekonfansub"
             )
-            instagram =   Button  (label='instgram'
+            instagram=Button (label='instgram'
                             ,style= discord.ButtonStyle.blurple, 
                             emoji= "🖼",url="https://www.instagram.com/bekonfansub/"
             )
@@ -131,13 +133,13 @@ class MySelect(Select):
             
         elif self.values[0] == "0x2" :
             print("i'm Reading 1")
-
+            
 
 @AZALEA.command()
 async def tt(ctx): 
     
     select = MySelect()
-    #select.callback = my_callback # I don't want for now
+    #select.callback = my_callback 
     
     view = View()
     view.add_item(select)
