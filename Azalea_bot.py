@@ -139,7 +139,6 @@ class MySelect(Select):
 async def tt(ctx): 
     
     select = MySelect()
-    #select.callback = my_callback 
     
     view = View()
     view.add_item(select)
