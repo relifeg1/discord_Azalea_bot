@@ -92,7 +92,7 @@ class MySelect(Select):
                 ]
             
         )
-    async def callback(self,interaction: discord.Interaction):
+    async def callback(self,interaction: discord.Interaction,message):
         twlink =  "https://twitter.com/ac"
         inslink = "https://www.instagram.com/ac"
         
@@ -116,7 +116,7 @@ class MySelect(Select):
                 colour = discord.Colour.blurple()
                 )
             embed.set_footer(text= f"Team {self.values[0]}")
-            embed.set_author(name =  embed.author.display_name, icon_url= embed.author.display_avatar)
+            embed.set_author(name =  message.author.display_name, icon_url= message.author.display_avatar)
             #embed.set_author(name = "Reply")
             
             
